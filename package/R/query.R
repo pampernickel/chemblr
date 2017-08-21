@@ -21,7 +21,7 @@ getSynonyms <- function(query) {
   as.character(unlist(xpathApply(d, "//molecule_chembl_id", xmlValue))) -> chemblid
   unique(chemblid) -> chemblid
   syns[which(synt %in% "FDA")] -> fda
-  unique(syns) -> all.names
+  unique(toupper(syns)) -> all.names
   res <- list(chemblid, fda, all.names)
   names(res) <- c("chemblid", "fda", "synonyms")
   return(res)
